@@ -19,8 +19,7 @@ const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
   const fileList = e.target.files;
   if (!fileList) return;
 
-  const arr: File[] = Array.from(fileList);
-
+const arr = Array.from(fileList) as File[];
   if (!arr.length) return;
 
   setUploading(true);
