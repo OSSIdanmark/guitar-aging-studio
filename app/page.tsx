@@ -15,17 +15,22 @@ export default function Home() {
 
   const openFile = () => inputRef.current?.click();
 
-  const handleUpload = (e: any) => {
-const arr: File[] = Array.from(e.target.files || []);   if (!arr.length) return;
+const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const fileList = e.target.files;
+  if (!fileList) return;
 
-    setUploading(true);
+  const arr: File[] = Array.from(fileList);
 
-    setTimeout(() => {
-      setFiles(arr);
-      setImages(arr.map((f) => URL.createObjectURL(f)));
-      setUploading(false);
-    }, 300);
-  };
+  if (!arr.length) return;
+
+  setUploading(true);
+
+  setTimeout(() => {
+    setFiles(arr);
+    setImages(arr.map((f) => URL.createObjectURL(f)));
+    setUploading(false);
+  }, 300);
+};
 
   const generate = () => {
     if (!files.length) return;
