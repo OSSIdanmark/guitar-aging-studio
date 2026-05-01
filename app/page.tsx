@@ -16,7 +16,7 @@ export default function Home() {
   const openFile = () => inputRef.current?.click();
 
   const handleUpload = (e: any) => {
-const arr = Array.from(e.target.files || []) as File[];    if (!arr.length) return;
+const arr: File[] = Array.from(e.target.files || []);   if (!arr.length) return;
 
     setUploading(true);
 
